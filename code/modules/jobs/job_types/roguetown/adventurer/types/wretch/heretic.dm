@@ -392,12 +392,6 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/cloth/monk
-				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
-					l_hand = /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger
-				else if(istype(H.patron, /datum/patron/inhumen/zizo))
-					l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/zizo
-				else
-					l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
 		var/datum/devotion/C = new /datum/devotion(H, H.patron)
 		C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_MINOR, start_maxed = TRUE)	//Minor regen, starts maxed out.
 		wretch_select_bounty(H)
