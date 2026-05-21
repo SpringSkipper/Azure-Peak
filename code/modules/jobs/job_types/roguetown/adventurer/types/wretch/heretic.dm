@@ -335,7 +335,7 @@
 		)
 	H.cmode_music = 'sound/music/cmode/antag/combat_cutpurse.ogg'
 	if(H.mind)
-		var/weapons = list("Rapier", "Sabre", "Bow", "Crossbow", "Slurbow")
+		var/weapons = list("Rapier", "Sabre", "Bow", "Crossbow", "Slurbow", "Your Own Hands")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -380,6 +380,18 @@
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				beltl = /obj/item/rogueweapon/scabbard/sheath
+				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
+					l_hand = /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger
+				else if(istype(H.patron, /datum/patron/inhumen/zizo))
+					l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/zizo
+				else
+					l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
+			if("Your Own Hands")
+				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
+				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
+				wrists = /obj/item/clothing/wrists/roguetown/bracers/cloth/monk
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					l_hand = /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger
 				else if(istype(H.patron, /datum/patron/inhumen/zizo))
