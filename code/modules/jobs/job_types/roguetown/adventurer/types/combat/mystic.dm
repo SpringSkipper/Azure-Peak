@@ -332,7 +332,7 @@
 	neck = /obj/item/clothing/neck/roguetown/coif/padded
 
 	if(H.mind)
-		var/weapons = list("Arming Sword", "Shortsword + Shield", "Mace + Shield", "Quarterstaff", "Spear") // you may want to upgrade for a better sword
+		var/weapons = list("Arming Sword", "Shortsword + Shield", "Mace + Shield", "Quarterstaff", "Spear", "Unarmed") // you may want to upgrade for a better sword
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		switch(weapon_choice)
 			if("Arming Sword")
@@ -358,6 +358,11 @@
 				r_hand = /obj/item/rogueweapon/spear
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+			if("Unarmed")
+				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
+				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
+				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 	backpack_contents = list(
