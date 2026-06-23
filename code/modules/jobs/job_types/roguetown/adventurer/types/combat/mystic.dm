@@ -330,13 +330,12 @@
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backl = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/clothing/neck/roguetown/coif/padded
-	var/gets_poke = TRUE
 
 	if(H.mind)
-		var/weapons = list("Arming Sword + Poke Spell", "Shortsword + Shield", "Mace + Shield", "Quarterstaff + Poke Spell", "Spear + Poke Spell", "Unarmed Pugilist") // you may want to upgrade for a better sword
+		var/weapons = list("Arming Sword", "Shortsword + Shield", "Mace + Shield", "Quarterstaff", "Spear", "Unarmed Pugilist") // you may want to upgrade for a better sword
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		switch(weapon_choice)
-			if("Arming Sword + Poke Spell")
+			if("Arming Sword")
 				r_hand = /obj/item/rogueweapon/sword
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
@@ -346,8 +345,7 @@
 				backr = /obj/item/rogueweapon/shield/wood
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
-				gets_poke = FALSE
-			if("Quarterstaff + Poke Spell")
+			if("Quarterstaff")
 				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/iron
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/staves, 3, TRUE)
@@ -356,17 +354,14 @@
 				backr = /obj/item/rogueweapon/shield/wood
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
-				gets_poke = FALSE
-			if("Spear + Poke Spell")
+			if("Spear")
 				r_hand = /obj/item/rogueweapon/spear
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
 			if("Unarmed Pugilist")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 3, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
 				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
-				gets_poke = FALSE
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 	backpack_contents = list(
@@ -375,8 +370,7 @@
 		/obj/item/book/spellbook = 1,
 		/obj/item/chalk = 1,
 		)
-	if(gets_poke)
-		grant_poke_spell(H)
+	grant_poke_spell(H)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_WITCH, devotion_limit = CLERIC_REQ_1)
 	if(H.mind)
