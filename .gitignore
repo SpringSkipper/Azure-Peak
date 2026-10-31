@@ -244,3 +244,8 @@ tools/MapAtmosFixer/MapAtmosFixer/bin/*
 
 # JavaScript tools
 **/node_modules
+tools/tgs_test/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+tools/tgs_test/obj/Debug/net8.0/Tgstation.TgsTest.AssemblyInfo.cs
+tools/tgs_test/obj/Debug/net8.0/Tgstation.TgsTest.AssemblyInfoInputs.cache
+tools/tgs_test/obj/Debug/net8.0/Tgstation.TgsTest.GeneratedMSBuildEditorConfig.editorconfig
+tools/tgs_test/obj/Debug/net8.0/Tgstation.TgsTest.GlobalUsings.g.cs
